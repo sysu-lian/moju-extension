@@ -1,0 +1,96 @@
+{
+  "name": "moju-extionsion",
+  "displayName": "moju-extionsion",
+  "description": "编码助手",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.27.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "publisher": "lian",
+  "icon": "images/icon.png",
+  "activationEvents": [
+    "onCommand:extension.openCreateProjectWebview",
+    "onCommand:extension.openConfigWebview",
+    "onCommand:extension.openHelpWebview"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "main": "./src/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "moju-extionsion.helloWorld",
+        "title": "Hello World"
+      },
+      {
+        "command": "extension.openConfigWebview",
+        "title": "代码生成配置"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "moju-extionsion",
+          "title": "assistant",
+          "icon": "images/icon.svg"
+        }
+      ]
+    },
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorFocus",
+          "command": "extension.openConfigWebview",
+          "group": "navigation@1"
+        }
+      ]
+    },
+    "views": {
+      "moju-extionsion": [
+        {
+          "id": "moju-extionsion1",
+          "name": "查看1"
+        },
+        {
+          "id": "moju-extionsion2",
+          "name": "查看2"
+        }
+      ]
+    },
+    "viewsWelcome": [
+      {
+        "view": "moju-extionsion1",
+        "contents": "[创建工程](command:extension.openCreateProjectWebview)\n[路由页面设计](command:extension.openConfigWebview)\n[使用帮助](command:extension.openHelpWebview)"
+      },
+      {
+        "view": "moju-extionsion2",
+        "contents": "窗口二：功能开发中~"
+      }
+    ]
+  },
+  "scripts": {
+    "build":"vsce package",
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "node ./test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^7.1.3",
+    "@types/mocha": "^8.0.0",
+    "@types/node": "^12.11.7",
+    "@types/vscode": "^1.27.0",
+    "eslint": "^7.12.1",
+    "glob": "^7.1.6",
+    "mocha": "^8.1.3",
+    "typescript": "^4.0.2",
+    "vscode-test": "^1.4.0"
+  },
+  "dependencies": {
+    "fs-extra": "^9.0.1"
+  }
+}
